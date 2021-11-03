@@ -1,0 +1,38 @@
+<!-- for use the code of myblog/templates/base.html/ in this file-->
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class = "container">
+        <div class = "row">
+            <div class="col-12">
+            <h1 class="display-4">{{post.title}}</h1>
+            <br />
+                <p>
+                    Written by: {{post.author}}
+                </p>
+                <p>Created: {{post.created}} | Updated: {{post.updated}}</p>
+                
+        </div>
+    </div>
+        <div class="row">
+            <div class="col-12">
+                <p>
+                    {{post.content}}
+                </p>
+            </div>
+            
+        </div>
+       
+    {% if request.user == post.author %}
+    <div class="row">
+        <div class="col-12">
+                <a href = "{% url 'posts:update' id=post.id %}" class="btn btn-md btn-secondary">Edit</a>
+                <a href = "{% url 'posts:delete' id=post.id %}" class="btn btn-md btn-danger">Delete</a>
+        </div>
+    </div>
+    {% endif %}
+    </div>    
+</div> 
+<br>
+
+{% endblock content %}

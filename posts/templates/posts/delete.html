@@ -1,0 +1,23 @@
+<!-- for use the code of myblog/templates/base.html/ in this file-->
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class = "text-danger">{{error}}</h1>
+            <h1 class="display-4">Are you sure you want to delete?</h1>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Form for delete a especific post -->
+        <div class="col-12">
+            <form method = "POST">
+                {% csrf_token %}
+                <input type = "submit" value= "Yes" class = "btn btn-md btn-danger"/>
+                <a href = "{% url 'posts:list' %}" class = "btn btn-md btn-primary">No</a>
+            </form>
+        </div>
+    </div>
+</div>
+   
+{% endblock content %}

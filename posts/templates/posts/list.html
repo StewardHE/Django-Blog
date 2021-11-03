@@ -1,0 +1,25 @@
+<!-- for use the code of myblog/templates/base.html/ in this file-->
+{% extends 'base.html' %}
+{% block content %}
+<div class="container px-5">
+    <div class="row">
+        <h1 class="display-4">The Blog</h1>
+        
+    </div>
+    <div class="row">
+        <div class="col-12">
+             {% for p in posts %}
+                <div class="row">
+                    <div class="col-12">
+                    <a href = "{% url 'posts:detail' id=p.id %}">{{p.title}}</a>
+                    <br>
+                    <p>{{p.content|slice:"255"}}</p>
+                    </div>
+                </div>
+                <hr>
+             {% endfor %}
+        </div>
+    </div>     
+</div>
+
+{% endblock content %}

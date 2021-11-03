@@ -1,0 +1,40 @@
+<!-- for use the code of myblog/templates/base.html/ in this file-->
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container px-5">
+
+     <div class="row">
+            <h1 class="display-4">Create a New Post</h1>   
+    </div>
+
+    <!-- Error message -->
+    <div class="row">
+        <h4 class = "text-danger">{{error}}</h4>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+        <!-- formulary to create a new post -->
+            <form method="POST">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="title">Post Title</label>
+                    <input type="text" name = "title" class="form-control" required/>
+                </div>
+                <div class="form-group">
+                    <label for="content">Post content</label>
+                    <textarea name="content" id="" cols="30" rows="10" class="form-control"></textarea>
+
+                </div>
+                <br>
+                        <!-- Create botom-->
+                    <input type="submit" value="Create" class="btn btn-md btn-primary mr-2"/>
+                        <!-- Cancel botom-->
+                    <a href="{% url 'posts:list' %}" class="btn btn-md btn-danger">cancel</a>
+            </form>
+           
+          </div>
+        </div>
+    </div>
+{% endblock content %}

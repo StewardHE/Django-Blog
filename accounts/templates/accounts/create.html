@@ -1,0 +1,40 @@
+<!-- for use the code of myblog/templates/base.html/ in this file-->
+{% extends 'base.html' %}
+{% block content%}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class = "display-4">Sign Up</h1>
+            <h4 class="text-danger">{{error}}</h4>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-12">
+            <form method = "POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type = "text" class = "form-control" name = "username" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type = "email" class = "form-control" name = "email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password1">Password</label>
+                    <input type = "password" class = "form-control" name = "password1" required>
+                </div>
+                <div class="form-group">
+                    <label for="password2">Confirm Password</label>
+                    <input type = "password" class = "form-control" name = "password2" required>
+                </div>
+                <br>
+                <input type = "submit" value="Sign Up" class = "btn btn-md btn-primary">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content%}
